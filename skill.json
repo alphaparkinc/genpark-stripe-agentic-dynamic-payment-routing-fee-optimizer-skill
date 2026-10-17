@@ -1,0 +1,32 @@
+{
+  "name": "genpark-stripe-agentic-dynamic-payment-routing-fee-optimizer-skill",
+  "version": "1.0.0",
+  "description": "Stripe & Mastercard Agent Connect-inspired Dynamic Payment Routing & Interchange Fee Optimizer. Evaluates transaction geography, card BIN networks, authorization probabilities, and basis-point rail costs (ACH, FedNow, Card Rails) to route payments along Pareto-optimal settlement paths.",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.llinkedin.com/company/92955550",
+  "tools": [
+    {
+      "name": "optimize_payment_route",
+      "description": "Select the optimal payment processor rail based on card type, ticket size, and interchange fee.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "payment_intent": {
+            "type": "object",
+            "description": "Amount_usd, currency, card_network, country, is_recurrent, customer_risk_score."
+          },
+          "available_rails": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Candidate rails with psp_name, fee_bps, fixed_fee_usd, and historical_auth_rate."
+          }
+        },
+        "required": [
+          "payment_intent"
+        ]
+      }
+    }
+  ]
+}
